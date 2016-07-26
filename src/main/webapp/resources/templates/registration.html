@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html ng-app = "yourWeather">
+<head>
+    <title>Your Weather</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular-route.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular-resource.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular-messages.js"></script>
+    <script type="text/javascript" src="../../static/js/weather-app.js"></script>
+    <link rel="stylesheet" type="text/css" href="../../static/css/design.css"/>
+</head>
+    <body ng-controller="userInfoCtrl">
+    <center>
+        <form name="registrationForm">
+            <h2>Please fill your registration information</h2>
+            <p>
+                <input class="text-field" name ="name" type="text" placeholder="Username"
+                       ng-model="registrationUserName"  ng-maxlength="64" required="required"/>
+                <div class="error" ng-messages="registrationForm.name.$error">
+                    <div ng-message="required">This field is required</div>
+                    <div ng-message="maxlength">Name must not exceed 64 characters</div>
+                </div>
+            </p>
+            <p>
+                <input  class="text-field" name="password" type="password" placeholder="Password"
+                        ng-model="registrationPass" ng-minlength="3" ng-maxlength="16" required="required"/>
+                <div class="error" ng-messages="registrationForm.password.$error">
+                    <div ng-message="required">This field is required</div>
+                    <div ng-message="minlength">Password must be over 3 characters</div>
+                    <div ng-message="maxlength">Password must not exceed 16 characters</div>
+                </div>
+            </p>
+
+            <p>
+                <input  class="text-field" name="confirmPassword" type="password" placeholder="Confirm Password"
+                        ng-model="registrationConfirmPass" ng-minlength="3" ng-maxlength="16" required="required"/>
+                <div class="error" ng-messages="registrationForm.confirmPassword.$error">
+                    <div ng-message="required">This field is required</div>
+                    <div ng-message="minlength">Password must be over 3 characters</div>
+                    <div ng-message="maxlength">Password must not exceed 16 characters</div>
+                </div>
+            </p>
+
+            <p><button class="button" ng-click="createUser()">Sign Up</button></p>
+            <button class="button" onclick="location.href='login'">Sign In</button>
+        </form>
+    </center>
+    </body>
+</html>

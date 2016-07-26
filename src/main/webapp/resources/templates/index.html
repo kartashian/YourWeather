@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html ng-app="yourWeather" xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Your Weather</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular-route.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular-resource.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular-messages.js"></script>
+    <script type="text/javascript" src="../../static/js/weather-app.js"></script>
+    <link rel="stylesheet" type="text/css" href="../../static/css/design.css"/>
+</head>
+<body>
+    <h2 th:inline="text">Hello, [[${#httpServletRequest.remoteUser}]]!</h2>
+    <form th:action="@{/logout}" method="post">
+        <input class="rightcorner button" type="submit" value="Sign Out" />
+    </form>
+
+    <div ng-view="true"></div>
+</body>
+</html>

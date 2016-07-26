@@ -1,0 +1,38 @@
+<div>
+    <div>
+        <div ng-show="waitMessage">Please wait for result</div>
+        <div>
+            <label>Location Name:</label>
+            <input class="text-field" type="text" ng-model="searchLocationName"/>
+            <button class="button" ng-click="getWeatherByLocation()">Search</button>
+        </div>
+
+        <div>
+            <label>Latitude:</label>
+            <input class="text-field" type="text" ng-model="searchLatitude"/>
+            <label>Longitude:</label>
+            <input class="text-field" type="text" ng-model="searchLongitude"/>
+            <button class="button" ng-click="getWeatherByCoordinates()">Search</button>
+        </div>
+
+        <div>
+            <div class="w-container" ng-show="showWeatherForm">
+                <div class="w-row" >
+                    <div class="weather-brief">
+                        <p><h2>Weather at {{searchSource}}</h2></p>
+                        <div>Temperature: {{weather.temperature}} С</div>
+                        <div>Wind Speed: {{weather.windSpeed}} m/s</div>
+                        <div>Pressure: {{weather.pressure}} mm Hg</div>
+                        <div>Humidity: {{weather.humidity}} %</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div ng-controller="userInfoCtrl">
+        <a href="#/userstatistic">
+            <button class="button" ng-click="getUserStatistic()">Show My Statistic</button>
+        </a>
+    </div>
+</div>

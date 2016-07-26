@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+    <head>
+        <title>Your Weather</title>
+        <link rel="stylesheet" type="text/css" href="../../static/css/design.css"/>
+    </head>
+    <center>
+        <body>
+            <h1>Welcome to the "Your Weather" Service</h1>
+
+            <h3>Click <a th:href="@{/index}">here</a> to start checking the weather</h3>
+
+            <p><button class="button" onclick="location.href='login'">Sign In</button></p>
+            <button class="button" onclick="location.href='registration'">Registration</button>
+        </body>
+    </center>
+</html>

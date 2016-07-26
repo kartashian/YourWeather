@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <title>Your Weather</title>
+        <style type="text/css">
+            p {
+                margin-bottom: 5px;
+            }
+            .button {
+                display: inline-block;
+                padding: 5px 15px;
+                background-color: #072433;
+                color: white;
+                text-align: center;
+                text-decoration: none;
+            }
+            .text-field {
+                display: inline-block;
+                padding: 5px 15px;
+                margin: 5px;
+            }
+            .error {
+                color: #ff3241;
+            }
+        </style>
+    </head>
+    <center>
+        <body>
+        <h2>Please, fill your login information</h2>
+
+        <div class="error" th:if="${param.error}">
+            Invalid username and password.
+        </div>
+        <div th:if="${param.logout}">
+            You have been logged out.
+        </div>
+        <form th:action="@{/login}" method="post">
+            <div><label> User Name : </label>
+                <input class="text-field" type="text" name="username"/>
+            </div>
+            <div><label> Password: </label>
+                <input  class="text-field" type="password" name="password"/>
+            </div>
+
+            <p><input class="button" type="submit" value="Sign In"/></p>
+        </form>
+        <button class="button" onclick="location.href='registration'">Sign Up</button>
+        </body>
+    </center>
+</html>

@@ -1,0 +1,25 @@
+<div>
+    <a href="#search">
+        <button class="button">Search Weather</button>
+    </a>
+    <center>
+        <div>
+            <p>
+                <h3>Your action statistic</h3>
+                <button class="button" ng-click="getUserStatistic()">Update Statistic</button>
+            </p>
+        </div>
+        <table>
+            <tr>
+                <th>Time</th>
+                <th>Action</th>
+                <th>Description</th>
+            </tr>
+            <tr ng-repeat="stat in userStatistic">
+                <td>{{stat.actionTime | date:'HH:mm:ss dd/MM/yyyy'}}</td>
+                <td>{{stat.action}}</td>
+                <td>{{stat.description}}</td>
+            </tr>
+        </table>
+    </center>
+</div>
