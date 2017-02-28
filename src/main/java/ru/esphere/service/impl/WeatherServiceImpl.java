@@ -17,23 +17,29 @@ import java.util.Random;
 @Service
 public class WeatherServiceImpl implements WeatherService {
 
-    @Autowired
-    private UserInfoRepository userInfoRepository;
+    private final UserInfoRepository userInfoRepository;
+
+    private final UserInfoService userInfoService;
 
     @Autowired
-    private UserInfoService userInfoService;
-
-    @Override
-    public synchronized Weather getWeatherByLocationName(String location) {
-        Weather weather = generateCurrentWeather();
-        writeUserSearchStatistic(location, weather);
-        return weather;
+    public WeatherServiceImpl(UserInfoRepository userInfoRepository, UserInfoService userInfoService) {
+        this.userInfoRepository = userInfoRepository;
+        this.userInfoService = userInfoService;
     }
 
     @Override
-    public synchronized Weather getWeatherByCoordinates(double latitude, double longitude) {
-        Weather weather = generateCurrentWeather();
+    public Weather getWeather(String location) {
+        return generateWeather(location);
+    }
+
+    @Override
+    public Weather getWeather(double latitude, double longitude) {
         String searchSource = String.valueOf(latitude) + " / " + String.valueOf(longitude);
+        return generateWeather(searchSource);
+    }
+
+    private synchronized Weather generateWeather(String searchSource) {
+        Weather weather = generateCurrentWeather();
         writeUserSearchStatistic(searchSource, weather);
         return weather;
     }

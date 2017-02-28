@@ -1,3 +1,7 @@
-# YourWeather
+# Weather Forecast Generator. Test assignment for java developer
 
-Example weather browsing Spring Boot Application which bult by Spring Security, Spring MVC, Spring JDBC, JUnit and AngularJs.
+###Task:
+Build weather forecast generator application using Spring Framework.
+
+###Solution:
+Spring Boot application with Spring Security, Spring MVC, Spring JDBC, JUnit backend and AngularJs frontend.

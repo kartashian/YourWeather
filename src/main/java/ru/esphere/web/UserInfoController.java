@@ -16,8 +16,12 @@ import java.util.List;
 @RequestMapping("/user")
 public class UserInfoController {
 
+    private final UserInfoService userInfoService;
+
     @Autowired
-    UserInfoService userInfoService;
+    public UserInfoController(UserInfoService userInfoService) {
+        this.userInfoService = userInfoService;
+    }
 
     @RequestMapping(value = "/statistic", method = RequestMethod.GET)
     @ResponseBody
@@ -29,7 +33,9 @@ public class UserInfoController {
     @ExceptionHandler(UserNameDuplicatedException.class)
     @RequestMapping(value = "/create", method = RequestMethod.POST)
     public ResponseEntity<?> createUser(@RequestBody User user) throws UserNameDuplicatedException {
-        userInfoService.createUser(user);
-        return new ResponseEntity(HttpStatus.CREATED);
+
+        return userInfoService.createUser(user)
+                ? new ResponseEntity(HttpStatus.CREATED)
+                : new ResponseEntity(HttpStatus.BAD_REQUEST);
     }
 }

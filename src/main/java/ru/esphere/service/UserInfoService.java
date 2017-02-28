@@ -7,7 +7,10 @@ import ru.esphere.service.exception.UserNameDuplicatedException;
 import java.util.List;
 
 public interface UserInfoService {
+
     User getCurrentUser();
-    void createUser(User user) throws UserNameDuplicatedException;
+
+    boolean createUser(User user) throws UserNameDuplicatedException;
+
     List<UserStatistic> getUserStatistic(Long userId);
 }

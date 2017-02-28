@@ -10,19 +10,23 @@ import ru.esphere.service.WeatherService;
 @RequestMapping("/weather")
 public class WeatherController {
 
+    private final WeatherService weatherService;
+
     @Autowired
-    WeatherService weatherService;
+    public WeatherController(WeatherService weatherService) {
+        this.weatherService = weatherService;
+    }
 
     @RequestMapping(value = "/location", method = RequestMethod.GET)
     @ResponseBody
     public Weather getWeatherByLocation(@RequestParam("location") String location) {
-        return weatherService.getWeatherByLocationName(location);
+        return weatherService.getWeather(location);
     }
 
     @RequestMapping(value = "/coordinate", method = RequestMethod.GET)
     @ResponseBody
     public Weather getWeatherByCoordinate(@RequestParam("latitude") double latitude,
                                           @RequestParam("longitude") double longitude) {
-        return weatherService.getWeatherByCoordinates(latitude, longitude);
+        return weatherService.getWeather(latitude, longitude);
     }
 }

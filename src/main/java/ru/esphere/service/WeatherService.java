@@ -3,6 +3,8 @@ package ru.esphere.service;
 import ru.esphere.model.Weather;
 
 public interface WeatherService {
-    Weather getWeatherByLocationName(String location);
-    Weather getWeatherByCoordinates(double latitude, double longitude);
+
+    Weather getWeather(String location);
+
+    Weather getWeather(double latitude, double longitude);
 }

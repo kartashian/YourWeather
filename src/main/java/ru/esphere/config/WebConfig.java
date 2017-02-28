@@ -9,6 +9,8 @@ import org.springframework.transaction.PlatformTransactionManager;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 import org.springframework.web.servlet.config.annotation.ViewControllerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
+import org.thymeleaf.templateresolver.ServletContextTemplateResolver;
+import org.thymeleaf.templateresolver.TemplateResolver;
 import ru.esphere.repository.UserInfoRepository;
 import ru.esphere.repository.impl.UserInfoRepositoryImpl;
 
@@ -46,5 +48,13 @@ public class WebConfig extends WebMvcConfigurerAdapter {
     @Bean
     protected UserInfoRepository userInfoRepository() {
         return new UserInfoRepositoryImpl(dataSource());
+    }
+
+    @Bean
+    protected TemplateResolver templateResolver() {
+        ServletContextTemplateResolver resolver = new ServletContextTemplateResolver();
+        resolver.setPrefix("/resources/templates/");
+        resolver.setSuffix(".html");
+        return resolver;
     }
 }
